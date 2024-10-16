@@ -13,8 +13,8 @@ RUN go mod download
 # Copiando o código Go para dentro do container
 COPY . .
 
-# Compilando o programa Go
-RUN go build -o fullcycle
+# Compilando o programa Go com otimização para reduzir o tamanho
+RUN go build -ldflags="-s -w" -o fullcycle
 
 # Etapa 2: Usando a imagem mínima
 FROM scratch
